@@ -4,28 +4,52 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+	private Player _player;
+	[SerializeField] private InteractManager _interactManager;
 	public Animator animator;
 	public string HorizontalInput;
 	public string CrouchInput;
 	public string JumpInput;
+	public string InteractInput;
 	
 	public CharacterController2D controller;
 	public float runSpeed = 40f;
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
-	
-	// Update is called once per frame
-	void Update () {
 
+	private void Start()
+	{
+		_player = GetComponent<Player>();
+	}
+
+	// Update is called once per frame
+	void Update () 
+	{
 		horizontalMove = Input.GetAxisRaw(HorizontalInput) * runSpeed;
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 		
+		animator.SetFloat("VerticalSpeed", controller.verticalspeed);
+
+		if (Input.GetButtonDown(InteractInput))
+		{
+			_interactManager.Interact(_player);
+		}
+		
+		//We are never grounded if the jump button is pressed.
+		if (Input.GetButton(JumpInput))
+		{
+			animator.SetBool("IsGrounded", false);
+		}
+		
 		if (Input.GetButtonDown(JumpInput))
 		{
-			animator.SetBool("IsJumping", true);
 			jump = true;
+		}
+		else if (Input.GetButtonUp(JumpInput))
+		{
+			
+			jump = false;
 		}
 
 		if (Input.GetButtonDown(CrouchInput))
@@ -40,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
 	public void OnLanding()
 	{
-		animator.SetBool("IsJumping", false);
+		animator.SetBool("IsGrounded", true);
 	}
 
 	public void OnCrouching(bool isCrouching)
@@ -52,6 +76,5 @@ public class PlayerMovement : MonoBehaviour
 	{
 		// Move our character
 		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
-		jump = false;
 	}
 }

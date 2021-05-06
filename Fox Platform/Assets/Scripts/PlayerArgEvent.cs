@@ -6,9 +6,8 @@ namespace TWGFramework
     [CreateAssetMenu(menuName = "PlayerArgEvent")]
     public class PlayerArgEvent : ScriptableObject
     {
-        private readonly List<PlayerEventListener> _eventListeners = new List<PlayerEventListener>();
+        public List<PlayerEventListener> _eventListeners = new List<PlayerEventListener>();
         
-
         public void Raise(Player e)
         {
 

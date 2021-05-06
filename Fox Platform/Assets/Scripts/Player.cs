@@ -1,12 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Transform spawnPoint;
+    public PlayerMovement movement;
+    public int ID;
     public float minHeightForDeath = -6f;
     // Update is called once per frame
+
+    private void Awake()
+    {
+        movement = GetComponent<PlayerMovement>();
+    }
+
     void Update()
     {
         if(gameObject.transform.position.y < minHeightForDeath)
@@ -14,6 +20,6 @@ public class Player : MonoBehaviour
     }
     public void Reset()
     {
-        gameObject.transform.position = spawnPoint.position;
+        Spawn.Instance.Respawn(this);
     }
 }

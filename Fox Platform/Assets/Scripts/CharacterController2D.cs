@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,6 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
-
 	const float k_GroundedRadius = .2f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
 	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
@@ -29,6 +29,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
+	public float verticalspeed;
 
 	private void Awake()
 	{
@@ -41,8 +42,16 @@ public class CharacterController2D : MonoBehaviour
 			OnCrouchEvent = new BoolEvent();
 	}
 
+
+	private void Update()
+	{
+		verticalspeed = m_Rigidbody2D.velocity.y;
+	}
+
 	private void FixedUpdate()
 	{
+		
+		
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -63,6 +72,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
+
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
@@ -123,13 +133,27 @@ public class CharacterController2D : MonoBehaviour
 				Flip();
 			}
 		}
-		// If the player should jump...
-		if (m_Grounded && jump)
-		{
-			// Add a vertical force to the player.
-			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-		}
+		// If the player is inputing jump and is grounded.
+		
+			if (jump)//We are pressing jump
+			{
+				
+				if (m_Grounded)
+				{
+					m_Grounded = false;
+					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
+					//m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+				}
+			}
+			else //We have let go of jump.
+			{
+				if (m_Rigidbody2D.velocity.y > 0)
+				{
+					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.5f);
+				}
+			}
+				
+		
 	}
 
 

@@ -10,9 +10,7 @@ namespace ExtendedUnityEvents
     public class PE : UnityEvent<Player> { }
     
     [Serializable]
-    public class I : UnityEvent<int>{}
+    public class GE : UnityEvent{}
 }
-    //[System.Serializable]
-    //public class CharS : UnityEvent<Character, string> { }
     
     

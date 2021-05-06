@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using TMPro;
@@ -6,12 +7,22 @@ using UnityEngine;
 
 public class TitleController : Singleton<TitleController>
 {
-    private Sequence sequence;
+    public GameObject startScreen;
     public TMP_Text titleText;
+    
     public int titleVibrato = 3;
     public float titleDuration = 0.5f;
     public Vector3 titlePunchDir = new Vector3(0,5,0);
+    public float fallAmount = 315f;
+
+    private Sequence sequence;
     
+    public void Start()
+    {
+        startScreen.SetActive(true);
+        Animate();
+    }
+
     public void Animate()
     {
         if (titleText.gameObject.activeInHierarchy)
@@ -31,7 +42,7 @@ public class TitleController : Singleton<TitleController>
             foreach (var index in randomOrder)
             {
                 Vector3 currCharOffset = animator.GetCharOffset(index);
-                sequence.Join(animator.DOOffsetChar(index, currCharOffset + new Vector3(0, -315, 0), 0.1f)).AppendCallback(
+                sequence.Join(animator.DOOffsetChar(index, currCharOffset + new Vector3(0, -fallAmount, 0), 0.1f)).AppendCallback(
                     () =>
                     {
                         animator.DOPunchCharOffset(index, titlePunchDir, titleDuration, titleVibrato, 0);

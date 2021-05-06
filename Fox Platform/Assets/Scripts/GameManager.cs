@@ -3,70 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    public TextMeshProUGUI winnerText;
-    private Player[] players;
-    private List<Player> winners = new List<Player>();
-    public GameObject startScreen;
-    public GameObject endScreen;
-    
+    public Player[] players { get; private set; }
+
     public void Start()
     {
-        winnerText.text = "";
-        TitleController.Instance.Animate();
+        SceneManager.LoadScene ("UI", LoadSceneMode.Additive);
+        Spawn.Instance.CreatePlayer(2);
         players = FindObjectsOfType<Player>();
+        EnablePlayers(false);
     }
-
-    public void HandlePlayerWin(Player winner)
+    
+    public void EnablePlayers(bool isOn)
     {
-        StartCoroutine(HandleWin(winner));
-    }
-
-    IEnumerator HandleWin(Player winner)
-    {
-        yield return new WaitForSeconds(1);
-        
-        if (!winners.Contains(winner))
+        foreach (var player in players)
         {
-            winners.Add(winner);
-            
-            if (winners.Count >= players.Length)
-            {
-                for (int i = 0; i < winners.Count; i++)
-                {
-                    winnerText.text += winners[i].gameObject.name + "\n";
-                }
-                
-                EndGame();
-            }
-            
+            player.movement.enabled = isOn;
         }
-    }
-
-    public void EndGame()
-    {
-        endScreen.SetActive(true);
     }
     
     public void StartGame()
     {
-        startScreen.SetActive(false);
-    }
-
-    public void RestartGame()
-    {
-        foreach (var player in winners)
-        {
+        //Remake the level.
+        LevelManager.Instance.MakeLevel();
+        //Setup the players in the right position and setup their data if need be.
+        foreach (var player in players)
             player.Reset();
-        }
-        
-        winnerText.text = "";
-        
-        winners.Clear();
-        
-        startScreen.SetActive(false);
-        endScreen.SetActive(false);
     }
 }
