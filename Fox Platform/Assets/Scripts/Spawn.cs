@@ -16,7 +16,6 @@ public class Spawn : Singleton<Spawn>
             
             Player newPlayer = Instantiate(playerPrefab, transform.position, Quaternion.identity, transform);
             
-            newPlayer.ID = ID;
             newPlayer.GetComponent<SpriteRenderer>().color = pColors[i];
             newPlayer.GetComponent<SpriteRenderer>().sortingOrder = ID;
             newPlayer.gameObject.name = "Player " + ID;

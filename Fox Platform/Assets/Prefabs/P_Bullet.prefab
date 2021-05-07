@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 2294066163619250495}
   - component: {fileID: 329581997015475091}
   - component: {fileID: -7986559866805609205}
-  m_Layer: 11
+  - component: {fileID: 7365758912786479754}
+  m_Layer: 12
   m_Name: P_Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 4594445103995921284}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.467358, y: -1.566488, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,12 +76,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5e47e0f5708ba8948bca17e462ed96d8, type: 3}
+  m_Sprite: {fileID: -619944875871852550, guid: 4ab337f40f9b09d4ebb91f96791472d8,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 0.36, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -119,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f82b79ef354f6ebe82dc79fc6d4c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velX: 15
+  velX: 3
 --- !u!58 &2294066163619250495
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -163,3 +165,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max: 3
+--- !u!95 &7365758912786479754
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594445103995921284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 61817c27128b41042a857ec84c1b8aa2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

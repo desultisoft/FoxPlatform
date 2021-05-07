@@ -10,9 +10,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Room.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@2.0.1/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/LifeTime.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/FreezeGun.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MoveToPosition.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -43,27 +40,28 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerArgEvent.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/WinManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Spawn.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/InteractManager.cs" />
       <option value="$PROJECT_DIR$/Assets/MoveToPosition.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Lever.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/thingy.cs" />
       <option value="$PROJECT_DIR$/Assets/Editor/ImageTool.cs" />
       <option value="$PROJECT_DIR$/Assets/Palette.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/HeldInteractable.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/LevelManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Item.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/SpeedGem.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterController2D.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
-      <option value="$PROJECT_DIR$/Assets/FreezeGun.cs" />
       <option value="$PROJECT_DIR$/Assets/Bullet.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/SlowPlayerOnTouch.cs" />
       <option value="$PROJECT_DIR$/Assets/LifeTime.cs" />
       <option value="$PROJECT_DIR$/Assets/Parallax.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/CharacterController2D.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Player.cs" />
+      <option value="$PROJECT_DIR$/Assets/FreezeGun.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Spawn.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/SpeedGem.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Item.cs" />
+      <option value="$PROJECT_DIR$/Assets/ItemBox.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Interactable.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Lever.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1rp7gvs5J7EUQm8FlWnFSkLdbGI" />
@@ -90,10 +88,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="20768">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="20768" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />

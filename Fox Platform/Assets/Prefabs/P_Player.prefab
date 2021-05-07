@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5581791973904486474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.108, z: 0}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5581791975595829817}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5581791975526593291}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.909, z: 0}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5581791975595829817}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 5581791975595829822}
   - component: {fileID: 5581791975595829823}
   m_Layer: 8
-  m_Name: Player
+  m_Name: P_Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 13
+  m_JumpForce: 3
   m_CrouchSpeed: 0.3
   m_MovementSmoothing: 0.05
   m_AirControl: 1
@@ -173,6 +173,8 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 5581791975526593290}
   m_CeilingCheck: {fileID: 5581791973904486477}
   m_CrouchDisableCollider: {fileID: 5581791975595829821}
+  k_GroundedRadius: 0.1
+  m_FacingRight: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -217,7 +219,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -236,18 +238,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1322434}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.0625, y: 2}
+    oldSize: {x: 0.33, y: 0.32}
     newSize: {x: 2.0625, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8739734, y: 0.7744956}
+  m_Size: {x: 0.11, y: 0.1}
   m_EdgeRadius: 0
 --- !u!58 &5581791975595829818
 CircleCollider2D:
@@ -262,9 +264,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.54}
+  m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
-  m_Radius: 0.4485168
+  m_Radius: 0.06
 --- !u!114 &5581791975595829820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ MonoBehaviour:
   JumpInput: Jump1
   InteractInput: 
   controller: {fileID: 5581791975595829819}
-  runSpeed: 40
+  runSpeed: 8
 --- !u!114 &5581791975595829822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,14 +299,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemManager:
+    interactRadius: 0.2
     _heldItem: {fileID: 0}
     m_WhatIsInteractable:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 2048
     _player: {fileID: 0}
     equipSlot: {fileID: 2904481962979632964}
+    interactable: {fileID: 0}
   movement: {fileID: 0}
-  ID: 0
   minHeightForDeath: -6
 --- !u!95 &5581791975595829823
 Animator:
@@ -349,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7672428256575141336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.356, y: -0.623, z: 0}
+  m_LocalPosition: {x: 0.05, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5581791975595829817}

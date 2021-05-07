@@ -5,6 +5,7 @@ namespace DefaultNamespace
 {
     public class Lever : Interactable
     {
+
         public UnityEvent onPulled;
         private Animator animator;
 
@@ -20,6 +21,7 @@ namespace DefaultNamespace
 
         public void OnAnimationEnd()
         {
+            isUsable = false;
             onPulled.Invoke();
         }
     }

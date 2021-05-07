@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3245048661091700058}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Prefab_Pallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5749710461187909113}
   - component: {fileID: 7964351479566059518}
   - component: {fileID: 5679665626957362226}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pallett
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,8 +59,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8075152723279176205}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 1, y: 1, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 3245048661091700058}
   m_RootOrder: 1
@@ -208,12 +208,12 @@ PrefabInstance:
     - target: {fileID: 6934485946889638674, guid: 88e2261aff4e9284aa1656ae87c5aac8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6934485946889638674, guid: 88e2261aff4e9284aa1656ae87c5aac8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6934485946889638674, guid: 88e2261aff4e9284aa1656ae87c5aac8,
         type: 3}
@@ -263,12 +263,12 @@ PrefabInstance:
     - target: {fileID: 6934485946889638674, guid: 88e2261aff4e9284aa1656ae87c5aac8,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6934485946889638674, guid: 88e2261aff4e9284aa1656ae87c5aac8,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88e2261aff4e9284aa1656ae87c5aac8, type: 3}
