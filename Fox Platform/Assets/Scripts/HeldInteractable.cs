@@ -1,10 +1,9 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+namespace DefaultNamespace
 {
     public class HeldInteractable : Interactable
     {
-        public override void Interact(Player player)
-        {
-            throw new System.NotImplementedException();
-        }
+        public override void Interact(Player player) { Debug.Log("HELDINTERACTABLE USED"); }
     }
 }

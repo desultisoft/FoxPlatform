@@ -1,36 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class SpeedGem : Interactable
+    public class SpeedGem : Item
     {
-        public Collider2D collision;
-        public SpriteRenderer rend;
-        
         public float speedMultiplier = 2;
         public float duration;
-        
-        public override void Interact(Player player)
+
+        public void OnTriggerEnter2D(Collider2D other)
         {
-            StartCoroutine(SpeedUpPlayer(player));
-            StartCoroutine(SetInactiveForAWhile());
+            //Pickup the item.
+            Player player = other.GetComponent<Player>();
+            if (player)
+            {
+                player.Equip(this);
+                collision.enabled = false;
+            }
         }
 
         private IEnumerator SpeedUpPlayer(Player player)
         {
+            //Consume the gem
             player.movement.runSpeed *= speedMultiplier;
+            rend.enabled = false;
+            
             yield return new WaitForSeconds(duration);
+            
+            //return to normal
             player.movement.runSpeed /= speedMultiplier;
+            
+            player.Equip(null);
         }
         
-        private IEnumerator SetInactiveForAWhile()
+        public override void Use(Player user)
         {
-            collision.enabled = false;
-            rend.enabled = false;
-            yield return new WaitForSeconds(duration);
-            collision.enabled = true;
-            rend.enabled = true;
+            StartCoroutine(SpeedUpPlayer(user));
         }
     }
 }

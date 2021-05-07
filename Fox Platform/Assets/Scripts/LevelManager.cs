@@ -82,13 +82,3 @@ public class LevelManager : Singleton<LevelManager>
         endRoomGO.transform.SetParent(currentLevel.transform);
     }
 }
-
-[CreateAssetMenu(menuName = "LevelSet")]
-public class LevelSet : ScriptableObject
-{
-    public List<Room> Levels;
-    public List<Room> GetRandomRooms(int roomsPerLevel)
-    {
-        return Levels.GenerateRandom(roomsPerLevel);
-    }
-}

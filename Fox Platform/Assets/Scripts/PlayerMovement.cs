@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	private Player _player;
-	[SerializeField] private InteractManager _interactManager;
 	public Animator animator;
 	public string HorizontalInput;
 	public string CrouchInput;
@@ -33,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
 		if (Input.GetButtonDown(InteractInput))
 		{
-			_interactManager.Interact(_player);
+			_player.Action();
 		}
 		
 		//We are never grounded if the jump button is pressed.
