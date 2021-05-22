@@ -15,11 +15,17 @@ TagManager:
   - 
   - 
   - Player
-  - Obstacle
+  - PlayerTrigger
   - Win
   - Interactable
   - PlayerInteraction
   - 
+  - 1PlayerOnly
+  - 2PlayerOnly
+  - 3PlayerOnly
+  - 4PlayerOnly
+  - 
+  - GroundOnly
   - 
   - 
   - 
@@ -30,18 +36,15 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Ground
   m_SortingLayers:
   - name: Background
     uniqueID: 1611635347
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 233812113
     locked: 0

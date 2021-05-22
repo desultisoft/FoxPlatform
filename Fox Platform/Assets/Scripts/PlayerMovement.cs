@@ -10,13 +10,16 @@ public class PlayerMovement : MonoBehaviour
 	public string CrouchInput;
 	public string JumpInput;
 	public string InteractInput;
-	
 	public CharacterController2D controller;
 	public float runSpeed = 40f;
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
 
+	//QOL improvements
+	public float jumpRemember = 0f;
+	public float jumpRememberTime = 0.2f;
+	
 	private void Start()
 	{
 		_player = GetComponent<Player>();
@@ -25,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		horizontalMove = Input.GetAxisRaw(HorizontalInput) * runSpeed;
+		horizontalMove = Input.GetAxisRaw(HorizontalInput) * Mathf.Clamp(runSpeed,0f, 100f);
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 		
 		animator.SetFloat("VerticalSpeed", controller.verticalspeed);
@@ -59,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 			crouch = false;
 		}
 
+		//controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 	}
 
 	public void OnLanding()

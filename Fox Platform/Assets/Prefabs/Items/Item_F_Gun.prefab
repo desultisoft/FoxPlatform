@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   muzzle: {fileID: 2011866524702733417}
-  maxBullets: 3
+  maxBullets: 10
   bullet: {fileID: 533897400733094076, guid: c2356c18f971db6418647c4b05f3730c, type: 3}

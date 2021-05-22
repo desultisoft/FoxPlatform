@@ -15,20 +15,20 @@ namespace DefaultNamespace
             Player player = other.GetComponent<Player>();
             if (player)
             {
-                 player.StartCoroutine(Slow(player));
+                 player.StartCoroutine(DegenSlow(player));
             }
         }
         
-        private IEnumerator Slow(Player player)
+        private IEnumerator DegenSlow(Player player)
         {
             float convertedPercent = slowPercent / 100;
-
-            float lostSpeed = convertedPercent *= player.movement.runSpeed;
-            player.movement.runSpeed -= lostSpeed;
-            
-            yield return new WaitForSeconds(duration);
-            
-            player.movement.runSpeed += lostSpeed;
+            float totalLostSpeed = (convertedPercent * player.movement.runSpeed);
+            player.movement.runSpeed -= totalLostSpeed;
+            for (int i = 0; i < duration; i++)
+            {
+                yield return new WaitForSeconds(1f);
+                player.movement.runSpeed+=totalLostSpeed / duration;
+            }
         }
     }
 }

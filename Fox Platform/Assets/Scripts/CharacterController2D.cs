@@ -4,6 +4,10 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
+	public bool wasJumping;
+	public float groundRemember = 0f;
+	public float groundRememberTime = 0.00000000001f;
+	
 	[SerializeField] private float m_JumpForce = 400f;							// Amount of force added when the player jumps.
 	[Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
 	[Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;	// How much to smooth out the movement
@@ -12,16 +16,15 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_GroundCheck;							// A position marking where to check if the player is grounded.
 	[SerializeField] private Transform m_CeilingCheck;							// A position marking where to check for ceilings
 	[SerializeField] private Collider2D m_CrouchDisableCollider;				// A collider that will be disabled when crouching
-	[SerializeField] private float k_GroundedRadius = .1f; // Radius of the overlap circle to determine if grounded
+	[SerializeField] private float k_GroundedRadius = .01f; // Radius of the overlap circle to determine if grounded
 	private bool m_Grounded;            // Whether or not the player is grounded.
-	const float k_CeilingRadius = .2f; // Radius of the overlap circle to determine if the player can stand up
+	const float k_CeilingRadius = .02f; // Radius of the overlap circle to determine if the player can stand up
 	private Rigidbody2D m_Rigidbody2D;
 	public bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	private Vector3 m_Velocity = Vector3.zero;
 
 	[Header("Events")]
 	[Space]
-
 	public UnityEvent OnLandEvent;
 
 	[System.Serializable]
@@ -50,8 +53,6 @@ public class CharacterController2D : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		
-		
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
 
@@ -62,6 +63,7 @@ public class CharacterController2D : MonoBehaviour
 		{
 			if (colliders[i].gameObject != gameObject)
 			{
+				groundRemember = groundRememberTime;
 				m_Grounded = true;
 				if (!wasGrounded)
 					OnLandEvent.Invoke();
@@ -72,7 +74,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump)
 	{
-
+		groundRemember -= Time.deltaTime;
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
@@ -135,25 +137,26 @@ public class CharacterController2D : MonoBehaviour
 		}
 		// If the player is inputing jump and is grounded.
 		
-			if (jump)//We are pressing jump
+		if (jump)//We are pressing jump
+		{
+			//We are trying to jump and deserve it.
+			if (groundRemember > 0)
 			{
-				
-				if (m_Grounded)
-				{
-					m_Grounded = false;
-					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
-					//m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-				}
+				m_Grounded = false;
+                m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_JumpForce);
 			}
-			else //We have let go of jump.
+		}
+
+		if (wasJumping && !jump)
+		{
+			if (m_Rigidbody2D.velocity.y > 0)
 			{
-				if (m_Rigidbody2D.velocity.y > 0)
-				{
-					m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.5f);
-				}
+				m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.5f);
 			}
-				
-		
+		}
+
+
+		wasJumping = jump;
 	}
 
 

@@ -1,7 +1,7 @@
 ﻿using TWGFramework;
 using UnityEngine;
 
-public class WinZone : MonoBehaviour
+public class WinZone : Singleton<WinZone>
 {
     public PlayerArgEvent onPlayerWin;
     private void OnTriggerEnter2D(Collider2D other)

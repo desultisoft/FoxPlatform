@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class Parallax : MonoBehaviour {
 
@@ -33,10 +34,8 @@ public class Parallax : MonoBehaviour {
     //Loop requirement
     public SpriteRenderer loopSpriteRenderer;
 
-
-    // Start is called before the first frame update
-    void Awake() {
-        cam = Camera.main;
+    public void Init()
+    {
         startPos = transform.position;
         zPosition = transform.position.z;
 

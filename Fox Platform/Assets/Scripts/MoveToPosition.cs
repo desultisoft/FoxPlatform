@@ -13,16 +13,6 @@ public class MoveToPosition : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + offSet);
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        other.transform.parent = transform;
-    }
-    
-    public void OnCollisionExit2D(Collision2D other)
-    {
-        other.transform.parent = null;
-    }
-    
 
     private void Start()
     {
